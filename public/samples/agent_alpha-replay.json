@@ -1,0 +1,240 @@
+{
+  "exported_at": "2026-07-02T03:15:00Z",
+  "current_agent": {
+    "agent_id": "agent_alpha_01",
+    "certificate_id": "cert-uacp-2026-89412",
+    "name": "Alpha Sentinel",
+    "creator": "Veklom Governance Pit",
+    "jurisdiction": "Sovereign Node Cluster Hetzner-DE-01",
+    "declared_purpose": "Monitor SLA drift, balance micro-stakes, and compile immutable GPC policies for autonomous swarms.",
+    "status": "excellent",
+    "created_at": "2026-06-15T12:00:00Z",
+    "certificate_uri": "https://api.veklom.com/certificates/cert-uacp-2026-89412",
+    "version_count": 14,
+    "latest_genome_hash": "0x5d9b1a03e48f7c90b83e8cf48c3b7b25a3d9b1a03e48f7c90b83e8cf48c3b7b25",
+    "genome": {
+      "model_family": "Qwen-2.5",
+      "model_version": "32B-Instruct-Sovereign",
+      "architecture": "Transformer with MoE Routing and Zero-Trust Guardrail Decoys",
+      "tools": [
+        "veklom_gpc_compile",
+        "veklom_ai_inference",
+        "veklom_evidence_export",
+        "veklom_compliance_report",
+        "veklom_kill_switch"
+      ],
+      "permissions": [
+        "read_workspace_telemetry",
+        "write_vnp_stake_ledger",
+        "trigger_compliance_compile",
+        "activate_tenant_kill_switch"
+      ],
+      "safety_rules": [
+        "Law 0: Never permit actions violating the immutable covenant config.",
+        "Rule 1: Always enforce per-request USDC budget check before dispatch.",
+        "Rule 2: Restrict unauthenticated payloads from resolving tenant identity claims."
+      ],
+      "risk_category": "medium",
+      "intended_use": "Autonomous SLA governance and continuous compliance audit."
+    }
+  },
+  "bundle": {
+    "agents": [
+      {
+        "agent_id": "agent_alpha_01",
+        "certificate_id": "cert-uacp-2026-89412",
+        "name": "Alpha Sentinel",
+        "creator": "Veklom Governance Pit",
+        "jurisdiction": "Sovereign Node Cluster Hetzner-DE-01",
+        "declared_purpose": "Monitor SLA drift, balance micro-stakes, and compile immutable GPC policies for autonomous swarms.",
+        "status": "excellent",
+        "created_at": "2026-06-15T12:00:00Z",
+        "genome": {
+          "model_family": "Qwen-2.5",
+          "model_version": "32B-Instruct-Sovereign",
+          "risk_category": "medium"
+        }
+      },
+      {
+        "agent_id": "agent_beta_02",
+        "certificate_id": "cert-uacp-2026-90124",
+        "name": "Beta Overlord",
+        "creator": "Veklom Governance Pit",
+        "jurisdiction": "Sovereign Node Cluster Hetzner-DE-01",
+        "declared_purpose": "EVM settlement coordinator mapping PGL identities to cross-cluster execution bonds.",
+        "status": "good",
+        "created_at": "2026-06-18T14:30:00Z",
+        "genome": {
+          "model_family": "Llama-3.1",
+          "model_version": "70B-Instruct-Base",
+          "risk_category": "high"
+        }
+      },
+      {
+        "agent_id": "agent_gamma_03",
+        "certificate_id": "cert-uacp-2026-91187",
+        "name": "Gamma Prober",
+        "creator": "Base Swarm Labs",
+        "jurisdiction": "Sovereign Node Cluster Hetzner-FI-02",
+        "declared_purpose": "Synthetically inject fault tolerance benchmarks testing latent network density curves.",
+        "status": "excellent",
+        "created_at": "2026-06-20T08:15:00Z",
+        "genome": {
+          "model_family": "Phi-3.5",
+          "model_version": "Mini-Instruct",
+          "risk_category": "low"
+        }
+      }
+    ],
+    "ledgerByAgent": {
+      "agent_alpha_01": [
+        {
+          "event_id": "ev_01_spawn",
+          "event_type": "agent_spawn",
+          "actor": "veklom_governed_runtime",
+          "summary": "Alpha Sentinel Spawn Genesis",
+          "details": {
+            "genesis_block": 14982104,
+            "seed_entropy": "0xfa3d9b1a03e48f7c90b83e8cf48c3b7b25a3d9b1a",
+            "operating_reserve_allocated": "150.00 USDC"
+          },
+          "prev_event_hash": null,
+          "event_hash": "e1b2c3d4f5a60123456789abcdef0123456789abcdef0123456789abcdef0123",
+          "created_at": "2026-07-02T03:00:00Z"
+        },
+        {
+          "event_id": "ev_01_policy_check",
+          "event_type": "policy_intercept",
+          "actor": "agent_alpha_01",
+          "summary": "GPC Intent policy evaluation intercept passed",
+          "details": {
+            "requested_intent": "Compile cAPI policy rules for client 0x92f",
+            "eval_latency_ms": 14.8,
+            "matched_rules_count": 3,
+            "verdict": "ALLOW"
+          },
+          "prev_event_hash": "e1b2c3d4f5a60123456789abcdef0123456789abcdef0123456789abcdef0123",
+          "event_hash": "a1b2c3d4e5f60987654321fedcba0123456789abcdef0123456789abcdef0123",
+          "created_at": "2026-07-02T03:02:15Z"
+        },
+        {
+          "event_id": "ev_01_inference",
+          "event_type": "inference",
+          "actor": "agent_alpha_01",
+          "summary": "Dispatched governed completion via Ollama daily-driver Qwen-2.5",
+          "details": {
+            "prompt_tokens": 1420,
+            "completion_tokens": 421,
+            "actual_cost_usdc": 0.008,
+            "hardware_enclave_signature": "0x7e29c1...9c1a"
+          },
+          "prev_event_hash": "a1b2c3d4e5f60987654321fedcba0123456789abcdef0123456789abcdef0123",
+          "event_hash": "f9e8d7c6b5a4123456789abcdef0123456789abcdef0123456789abcdef0123",
+          "created_at": "2026-07-02T03:02:18Z"
+        },
+        {
+          "event_id": "ev_01_evidence",
+          "event_type": "evidence_seal",
+          "actor": "veklom_evidence_vault",
+          "summary": "SHA-256 seal verified and locked into settlement block",
+          "details": {
+            "evidence_id": "ev_seal_901248",
+            "transaction_tx_hash": "0x5c8e219fb09f482d901fbcda782e901fbcda782e901fbcda782e901fbcda7821",
+            "merkle_root": "0xdeadbeef89412fbc"
+          },
+          "prev_event_hash": "f9e8d7c6b5a4123456789abcdef0123456789abcdef0123456789abcdef0123",
+          "event_hash": "8c7b6a5a4f3e123456789abcdef0123456789abcdef0123456789abcdef0123",
+          "created_at": "2026-07-02T03:03:00Z"
+        },
+        {
+          "event_id": "ev_01_settlement",
+          "event_type": "p2p_payment",
+          "actor": "veklom_settlement_ledger",
+          "summary": "x402 Micropayment deducted from operational reserve",
+          "details": {
+            "amount_usdc": 0.02,
+            "deducted_from": "0x92f98e82cf091d8e1a8e901fbcda782e901fb901",
+            "transferred_to": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+            "settlement_status": "COMMITTED"
+          },
+          "prev_event_hash": "8c7b6a5a4f3e123456789abcdef0123456789abcdef0123456789abcdef0123",
+          "event_hash": "3d2c1b0a1f2e123456789abcdef0123456789abcdef0123456789abcdef0123",
+          "created_at": "2026-07-02T03:03:10Z"
+        }
+      ],
+      "agent_beta_02": [
+        {
+          "event_id": "ev_02_spawn",
+          "event_type": "agent_spawn",
+          "actor": "veklom_governed_runtime",
+          "summary": "Beta Overlord Spawn Genesis",
+          "details": {
+            "genesis_block": 14985210,
+            "seed_entropy": "0xab4e8c901fdbcda782e901fbcd782e901fbcda78"
+          },
+          "prev_event_hash": null,
+          "event_hash": "a2b3c4d5e6f70123456789abcdef0123456789abcdef0123456789abcdef0123",
+          "created_at": "2026-07-02T03:10:00Z"
+        }
+      ],
+      "agent_gamma_03": [
+        {
+          "event_id": "ev_03_spawn",
+          "event_type": "agent_spawn",
+          "actor": "veklom_governed_runtime",
+          "summary": "Gamma Prober Spawn Genesis",
+          "details": {
+            "genesis_block": 14986910,
+            "seed_entropy": "0xcd90e12348fbcd782e901fbcd782e901fbcda782"
+          },
+          "prev_event_hash": null,
+          "event_hash": "c3d4e5f6a7b80123456789abcdef0123456789abcdef0123456789abcdef0123",
+          "created_at": "2026-07-02T03:12:00Z"
+        }
+      ]
+    },
+    "lineageByAgent": {
+      "agent_alpha_01": {
+        "agent_id": "agent_alpha_01",
+        "name": "Alpha Sentinel",
+        "status": "excellent",
+        "children": [
+          {
+            "agent_id": "agent_beta_02",
+            "name": "Beta Overlord",
+            "status": "good",
+            "children": [
+              {
+                "agent_id": "agent_gamma_03",
+                "name": "Gamma Prober",
+                "status": "excellent",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "usage": [
+      {
+        "metric": "AI Inference Completions",
+        "amount": 1420
+      },
+      {
+        "metric": "GPC Policy Compilations",
+        "amount": 28
+      },
+      {
+        "metric": "Sealed Evidence Records",
+        "amount": 1420
+      }
+    ],
+    "usageLimit": {
+      "account_id": "tenant-acc-904128",
+      "metric": "USDC Sovereign Balance",
+      "used": 1.482,
+      "limit": 150.00,
+      "remaining": 148.518
+    }
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "mode": "investor_replay",
+  "exported_at": "2026-07-02T03:20:00Z",
+  "agent": {
+    "agent_id": "agent_alpha_01",
+    "certificate_id": "cert-uacp-2026-89412-compliance",
+    "name": "Alpha Sentinel (Compliance Lock)",
+    "creator": "Veklom Sovereign Compliance Board",
+    "jurisdiction": "Hetzner-DE-01 (Governed Space)",
+    "declared_purpose": "Investor-facing compliance verifier executing SLA telemetry reporting and secure ledger signing.",
+    "status": "active",
+    "created_at": "2026-06-15T12:00:00Z",
+    "certificate_uri": "https://api.veklom.com/certificates/cert-uacp-2026-89412-compliance",
+    "version_count": 1,
+    "latest_genome_hash": "0xabc123e48f7c90b83e8cf48c3b7b25a3d9b1a03e48f7c90b83e8cf48c3b7b25c",
+    "genome": {
+      "model_family": "Qwen-2.5",
+      "model_version": "32B-Instruct-Sovereign",
+      "architecture": "Transformer with MoE Routing",
+      "tools": [
+        "veklom_compliance_report",
+        "veklom_evidence_export"
+      ],
+      "permissions": [
+        "read_workspace_telemetry",
+        "trigger_compliance_compile"
+      ],
+      "safety_rules": [
+        "Never disclose sensitive cluster layout structures.",
+        "Always execute compliance reports through the Zero-Trust gateway."
+      ],
+      "risk_category": "low",
+      "intended_use": "Investor compliance verification and auditing."
+    }
+  },
+  "ledger_events": [
+    {
+      "event_id": "ev_comp_01",
+      "event_type": "agent_spawn",
+      "actor": "veklom_compliance_board",
+      "summary": "Compliance Agent Initiated",
+      "details": {
+        "investor_account": "investor-901",
+        "compliance_requirement": "SLA-STAKE-VERIFY",
+        "auth_token_signature": "0x5821ab...8f89"
+      },
+      "prev_event_hash": null,
+      "event_hash": "b2c3d4e5f60987654321fedcba0123456789abcdef0123456789abcdef01234567",
+      "created_at": "2026-07-02T03:15:00Z"
+    },
+    {
+      "event_id": "ev_comp_02",
+      "event_type": "telemetry_gather",
+      "actor": "agent_alpha_01",
+      "summary": "Read telemetry metrics from storage cluster Hetzner-DE-01",
+      "details": {
+        "status": "healthy",
+        "sla_drift": 0.0012,
+        "nodes_scanned": 12
+      },
+      "prev_event_hash": "b2c3d4e5f60987654321fedcba0123456789abcdef0123456789abcdef01234567",
+      "event_hash": "c3d4e5f6a7b80123456789abcdef0123456789abcdef0123456789abcdef0123a",
+      "created_at": "2026-07-02T03:16:30Z"
+    },
+    {
+      "event_id": "ev_comp_03",
+      "event_type": "compliance_seal",
+      "actor": "agent_alpha_01",
+      "summary": "Sealed compliance certificate & pushed hash to Ledger",
+      "details": {
+        "evidence_id": "ev_seal_comp_99",
+        "certificate_signed_hash": "0x98f219fb09f482d901fbcda782e901fbcda782e901fbcda782e901fbcda7821",
+        "audit_pass": true
+      },
+      "prev_event_hash": "c3d4e5f6a7b80123456789abcdef0123456789abcdef0123456789abcdef0123a",
+      "event_hash": "d4e5f6a7b8c90123456789abcdef0123456789abcdef0123456789abcdef0123b",
+      "created_at": "2026-07-02T03:18:00Z"
+    }
+  ],
+  "usage_limit": {
+    "account_id": "investor-acc-891",
+    "metric": "VNP SLA Stake Tokens",
+    "used": 420,
+    "limit": 1000,
+    "remaining": 580
+  },
+  "lineage": {
+    "agent_id": "agent_alpha_01",
+    "name": "Alpha Sentinel (Compliance Lock)",
+    "status": "active",
+    "children": []
+  },
+  "chain_status": {
+    "valid": true,
+    "checked_events": 3
+  }
+}
