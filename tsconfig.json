@@ -14,7 +14,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true,
+    "incremental": false,
     "skipLibCheck": true,
     "plugins": [
       {
@@ -39,3 +39,4 @@
     "node_modules"
   ]
 }
+

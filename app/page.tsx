@@ -29,6 +29,7 @@ import type {
   LineageNode
 } from "../lib/types";
 import { normalizePacket, selectAgent } from "../lib/normalize";
+import { fetchJsonFromUrl, parseJsonPayload, readJsonFile } from "../lib/packet-ingest";
 
 export default function ReplayViewerPage() {
   // Input states
@@ -39,6 +40,8 @@ export default function ReplayViewerPage() {
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [selectedEvent, setSelectedEvent] = useState<LedgerEvent | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
+
+  const getErrorMessage = (error: unknown, fallback: string) => error instanceof Error ? error.message : fallback;
 
   // Load a demo sample on startup
   useEffect(() => {
@@ -60,29 +63,29 @@ export default function ReplayViewerPage() {
       setErrorMsg(null);
       const res = await fetch(path);
       if (!res.ok) throw new Error(`HTTP ${res.status} failed to fetch sample`);
-      const data = await res.json();
+      const data = parseJsonPayload(await res.text());
       const norm = normalizePacket(data);
       setPacket(norm);
       setRawInput(JSON.stringify(data, null, 2));
       setActiveTab("viewer");
-    } catch (e: any) {
-      setErrorMsg(e.message || "Failed to load sample");
+    } catch (error: unknown) {
+      setErrorMsg(getErrorMessage(error, "Failed to load sample"));
     }
   };
 
   // Process raw text/paste action
-  const handleParseRawInput = () => {
+  const handleParseRawInput = async () => {
     try {
       setErrorMsg(null);
       if (!rawInput.trim()) {
         throw new Error("Input is empty");
       }
-      const data = JSON.parse(rawInput);
+      const data = parseJsonPayload(rawInput);
       const norm = normalizePacket(data);
       setPacket(norm);
       setActiveTab("viewer");
-    } catch (e: any) {
-      setErrorMsg(e.message || "Invalid JSON payload structure");
+    } catch (error: unknown) {
+      setErrorMsg(getErrorMessage(error, "Invalid JSON payload structure"));
     }
   };
 
@@ -91,36 +94,30 @@ export default function ReplayViewerPage() {
     if (!urlInput.trim()) return;
     try {
       setErrorMsg(null);
-      const res = await fetch(urlInput);
-      if (!res.ok) throw new Error(`Fetch failed: ${res.statusText}`);
-      const data = await res.json();
+      const data = await fetchJsonFromUrl(urlInput);
       const norm = normalizePacket(data);
       setPacket(norm);
       setRawInput(JSON.stringify(data, null, 2));
       setActiveTab("viewer");
-    } catch (e: any) {
-      setErrorMsg(e.message || "Failed to retrieve and normalize remote URL");
+    } catch (error: unknown) {
+      setErrorMsg(getErrorMessage(error, "Failed to retrieve and normalize remote URL"));
     }
   };
 
   // Handle local file upload
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      try {
-        setErrorMsg(null);
-        const data = JSON.parse(event.target?.result as string);
-        const norm = normalizePacket(data);
-        setPacket(norm);
-        setRawInput(JSON.stringify(data, null, 2));
-        setActiveTab("viewer");
-      } catch (err: any) {
-        setErrorMsg(err.message || "Failed to parse uploaded JSON file");
-      }
-    };
-    reader.readAsText(file);
+    try {
+      setErrorMsg(null);
+      const data = await readJsonFile(file);
+      const norm = normalizePacket(data);
+      setPacket(norm);
+      setRawInput(JSON.stringify(data, null, 2));
+      setActiveTab("viewer");
+    } catch (error: unknown) {
+      setErrorMsg(getErrorMessage(error, "Failed to parse uploaded JSON file"));
+    }
   };
 
   // Select agent inside bundle
@@ -636,3 +633,6 @@ export default function ReplayViewerPage() {
     </div>
   );
 }
+
+
+
